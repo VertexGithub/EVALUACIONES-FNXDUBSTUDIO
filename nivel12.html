@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evaluación Nivel 12 - Fnxdubstudio</title>
+    <style>
+        /* ESTILOS VISUALES PARA LA APP */
+        body { font-family: 'Segoe UI', Arial, sans-serif; padding: 20px; background-color: #f0f2f5; color: #333; }
+        .container { 
+            max-width: 850px; 
+            margin: auto; 
+            background: white; 
+            padding: 40px; 
+            border-radius: 10px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+        }
+        
+        .header { text-align: center; border-bottom: 3px solid #000; margin-bottom: 20px; padding-bottom: 15px; }
+        .header img { max-height: 100px; margin-bottom: 10px; }
+        .header h1 { font-size: 22px; margin: 0; text-transform: uppercase; letter-spacing: 1px; }
+        .header h2 { font-size: 16px; font-weight: normal; margin: 5px 0; color: #555; text-transform: uppercase; }
+        
+        .info-section { 
+            display: flex; 
+            justify-content: space-between; 
+            margin: 20px 0; 
+            gap: 20px;
+        }
+        .info-box { flex: 1; text-align: center; }
+        .info-box strong { display: block; margin-bottom: 5px; font-size: 14px; }
+        .info-box input { 
+            border: none; 
+            border-bottom: 1px solid #000; 
+            width: 100%; 
+            text-align: center; 
+            font-size: 16px; 
+            padding: 5px; 
+            outline: none; 
+            background: transparent; 
+        }
+        
+        table { width: 100%; border-collapse: collapse; margin-bottom: 25px; font-size: 13px; }
+        th, td { border: 1px solid #000; padding: 10px; text-align: center; }
+        th { background-color: #f8f9fa; text-transform: uppercase; font-size: 12px; }
+        .criterio-col { text-align: left; width: 50%; }
+        
+        .status-box { 
+            width: 80%; margin: 20px auto; padding: 20px; 
+            border: 3px solid #000; border-radius: 12px; text-align: center;
+        }
+        .status-title { font-size: 14px; font-weight: bold; text-transform: uppercase; margin-bottom: 5px; }
+        .status-percentage { font-size: 24px; font-weight: bold; margin-bottom: 10px; }
+        .status-label { font-size: 32px; font-weight: 900; letter-spacing: 2px; }
+        
+        .bg-aprobado { background-color: #d4edda; border-color: #28a745; color: #155724; }
+        .bg-reprobado { background-color: #f8d7da; border-color: #dc3545; color: #721c24; }
+
+        .btn-print { 
+            display: block; width: 100%; padding: 18px; background: #000; color: white; 
+            border: none; border-radius: 5px; font-size: 16px; font-weight: bold; 
+            cursor: pointer; margin-top: 20px; transition: 0.3s; text-transform: uppercase;
+        }
+        .btn-print:hover { background: #333; }
+
+        /* AJUSTES PARA EL PDF */
+        @media print {
+            @page { size: letter; margin: 1cm; }
+            body { background-color: white; padding: 0; }
+            .container { box-shadow: none; border: none; width: 100%; max-width: 100%; margin: 0; padding: 0; }
+            .btn-print { display: none; }
+            select { border: none; appearance: none; -webkit-appearance: none; font-weight: bold; font-size: 14px; background: none; }
+            input { border: none !important; font-weight: bold; }
+            .status-box { border-width: 2.5pt; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container" id="boleta">
+    <div class="header">
+        <img src="https://i.postimg.cc/rK3xCRc0/LOGO-DUB-STUDIO-FNX.png" alt="Logo Fnxdubstudio">
+        <h1>FICHA DE EVALUACIÓN - NIVEL 12</h1>
+        <h2>PRÁCTICAS DE DOBLAJE II Y ADAPTACIÓN MUSICAL</h2>
+    </div>
+
+    <div class="info-section">
+        <div class="info-box">
+            <strong>ESTUDIANTE</strong>
+            <input type="text" id="nombreAlumno" placeholder="Nombre completo">
+        </div>
+        <div class="info-box">
+            <strong>PROFESOR</strong>
+            <input type="text" id="nombreProfesor" placeholder="Nombre del instructor">
+        </div>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 5%;">#</th>
+                <th>Criterio de Evaluación</th>
+                <th style="width: 15%;">Puntaje (1-5)</th>
+                <th style="width: 35%;">Observaciones</th>
+            </tr>
+        </thead>
+        <tbody id="tablaBody"></tbody>
+    </table>
+
+    <div id="resultadoFinal" class="status-box">
+        <div class="status-title">Calificación Final Obtenida</div>
+        <div class="status-percentage"><span id="puntosLabel">0</span>/80 pts — <span id="porcentajeLabel">0%</span></div>
+        <div id="statusText" class="status-label">PENDIENTE</div>
+    </div>
+</div>
+
+<button class="btn-print" onclick="window.print()">Generar PDF para el Alumno</button>
+
+<script>
+    // Criterios para el Nivel 12
+    const criterios = [
+        "Logra los ejercicios de vocalización correctamente.",
+        "Maneja técnica durante la ejecución de su canción.",
+        "Logra una buena interpretación de su canción.",
+        "Logra aplicar el canto sincrónico.",
+        "Usa recursos y adornos vocales en su canción.",
+        "Respeta las reglas de adaptación musical",
+        "Elabora una propuesta adaptativa correcta.",
+        "Maneja conteo silábico de forma correcta",
+        "Mantiene un buen ritmo, cadencia y dicción",
+        "Maneja técnica de lypsinc",
+        "Maneja su acento neutro",
+        "Sigue las indicaciones del director en su interpretación de escenas.",
+        "Logra sus pininos de manera correcta en clase.",
+        "Aplica correctamente el conteo silábico y el ritmo en su escena.",
+        "Logra en 3 tomas sus diálogos.",
+        "Usa lenguaje corporal en su interpretación frente a escena"
+    ];
+
+    const tbody = document.getElementById('tablaBody');
+    criterios.forEach((c, i) => {
+        const row = `<tr>
+            <td>${i+1}</td>
+            <td class="criterio-col">${c}</td>
+            <td><select class="score" onchange="calcular()">
+                <option value="0">-</option><option value="1">1</option>
+                <option value="2">2</option><option value="3">3</option>
+                <option value="4">4</option><option value="5">5</option>
+            </select></td>
+            <td><input type="text" class="obs" style="width:95%; border:none; border-bottom:1px solid #eee; outline:none;"></td>
+        </tr>`;
+        tbody.innerHTML += row;
+    });
+
+    function calcular() {
+        let total = 0;
+        document.querySelectorAll('.score').forEach(s => total += parseInt(s.value));
+        
+        // Máximo 80 puntos (16 criterios x 5 pts)
+        let porcentaje = (total / 80) * 100;
+        document.getElementById('puntosLabel').innerText = total;
+        document.getElementById('porcentajeLabel').innerText = porcentaje.toFixed(1) + "%";
+
+        const box = document.getElementById('resultadoFinal');
+        const txt = document.getElementById('statusText');
+
+        if (porcentaje >= 70) {
+            txt.innerText = "APROBADO";
+            box.className = "status-box bg-aprobado";
+        } else if (total > 0) {
+            txt.innerText = "NO APROBADO";
+            box.className = "status-box bg-reprobado";
+        } else {
+            txt.innerText = "PENDIENTE";
+            box.className = "status-box";
+        }
+    }
+</script>
+</body>
+</html>
