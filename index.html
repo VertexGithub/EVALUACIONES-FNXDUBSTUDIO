@@ -1,117 +1,234 @@
 <!DOCTYPE html>
+
 <html lang="es">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Selección de Niveles - Fnxdubstudio</title>
+
     <style>
+
         body { font-family: 'Segoe UI', Arial, sans-serif; padding: 20px; background-color: #f0f2f5; color: #333; margin: 0; }
+
         .container { 
+
             max-width: 900px; 
+
             margin: auto; 
+
             background: white; 
+
             padding: 40px; 
+
             border-radius: 10px; 
+
             box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+
             box-sizing: border-box;
+
             text-align: center;
+
         }
+
         .header { margin-bottom: 30px; border-bottom: 3px solid #1a365d; padding-bottom: 15px; }
+
         .header img { max-height: 80px; margin-bottom: 10px; }
+
         .header h1 { font-size: 24px; margin: 0; text-transform: uppercase; letter-spacing: 1px; color: #1a365d; }
+
         .header p { font-size: 14px; color: #4a5568; margin: 5px 0 0 0; text-transform: uppercase; }
 
+
+
         .grid-niveles {
+
             display: grid;
+
             grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+
             gap: 15px;
+
             margin-top: 20px;
+
         }
+
         .btn-nivel {
+
             background: #f7fafc;
+
             border: 2px solid #2b6cb0;
+
             border-radius: 8px;
+
             padding: 15px;
+
             cursor: pointer;
+
             text-align: left;
+
             transition: 0.2s;
+
             display: flex;
+
             flex-direction: column;
+
             justify-content: center;
+
         }
+
         .btn-nivel:hover {
+
             background: #2b6cb0;
+
             color: #fff;
+
             border-color: #2b6cb0;
+
         }
+
         .btn-nivel:hover .nivel-num {
+
             color: #fff;
+
         }
+
         .btn-nivel:hover .nivel-nombre {
+
             color: #e2e8f0;
+
         }
+
         .nivel-num {
+
             font-size: 15px;
+
             font-weight: bold;
+
             text-transform: uppercase;
+
             color: #2b6cb0;
+
         }
+
         .nivel-nombre {
+
             font-size: 11px;
+
             color: #718096;
+
             text-transform: uppercase;
+
             margin-top: 4px;
+
             font-weight: 600;
+
         }
+
     </style>
+
 </head>
+
 <body>
 
+
+
 <div class="container">
+
     <div class="header">
+
         <img src="https://i.postimg.cc/rK3xCRc0/LOGO-DUB-STUDIO-FNX.png" alt="Logo Fnxdubstudio">
+
         <h1>Sistema de Evaluaciones</h1>
+
         <p>Seleccione el nivel a evaluar</p>
+
     </div>
 
+
+
     <div class="grid-niveles" id="gridNiveles"></div>
+
 </div>
 
+
+
 <script>
+
     const niveles = [
+
         { num: 1, nombre: "MANEJO DE LA VOZ HABLADA Y CANTADA" },
+
         { num: 2, nombre: "PRINCIPIOS ACTORALES DEL DOBLAJE" },
+
         { num: 3, nombre: "PRINCIPIOS ACTORALES DEL DOBLAJE (CARACTERIZACIÓN)" },
+
         { num: 4, nombre: "PRINCIPIOS ACTORALES DEL DOBLAJE (NORMATIVIDAD ACTORAL Y AMBIENTES)" },
+
         { num: 5, nombre: "EXPRESIÓN VOCAL Y DRAMATISMO" },
+
         { num: 6, nombre: "PSICOLOGÍA DE LA ACTUACIÓN" },
+
         { num: 7, nombre: "TÉCNICAS EN ARTES ESCENICAS" },
+
         { num: 8, nombre: "DRAMATURGIA" },
+
         { num: 9, nombre: "EDICIÓN BÁSICA DE AUDIO Y VIDEO" },
+
         { num: 10, nombre: "TEORÍA DE LA VOZ Y EXPRESIÓN MUSICAL" },
+
         { num: 11, nombre: "PRÁCTICA DE DOBLAJE I Y ACTUACIÓN DE VOZ" },
+
         { num: 12, nombre: "PRÁCTICAS DE DOBLAJE II Y ADAPTACIÓN MUSICAL" },
+
         { num: 13, nombre: "TALLER DE ESPECIALIDADES EN DOBLAJE" },
+
         { num: 14, nombre: "PRÁCTICAS DE DOBLAJE III" },
+
         { num: 15, nombre: "LOCUCIÓN COMERCIAL" }
+
     ];
 
+
+
     const grid = document.getElementById('gridNiveles');
+
     
+
     niveles.forEach(n => {
+
         const numStr = String(n.num).padStart(2, '0');
+
         const btn = document.createElement('button');
+
         btn.className = 'btn-nivel';
+
         btn.innerHTML = `
+
             <span class="nivel-num">EVALUACIÓN NIVEL ${numStr}</span>
+
             <span class="nivel-nombre">${n.nombre}</span>
+
         `;
+
         btn.onclick = () => {
+
             alert("Abriendo evaluación para el Nivel " + n.num + ": " + n.nombre);
+
         };
+
         grid.appendChild(btn);
+
     });
+
 </script>
 
+
+
 </body>
-</html>
+
+</html> 
+
