@@ -40,10 +40,26 @@
             background: transparent; 
         }
         
-        table { width: 100%; border-collapse: collapse; margin-bottom: 25px; font-size: 13px; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 20px; font-size: 13px; }
         th, td { border: 1px solid #000; padding: 10px; text-align: center; }
         th { background-color: #f8f9fa; text-transform: uppercase; font-size: 12px; }
         .criterio-col { text-align: left; width: 50%; }
+
+        /* NUEVO RECUADRO DE OBSERVACIONES GENERALES */
+        .obs-box { margin-bottom: 25px; text-align: left; width: 100%; }
+        .obs-box strong { display: block; font-size: 13px; text-transform: uppercase; margin-bottom: 8px; }
+        .obs-box textarea { 
+            width: 100%; 
+            box-sizing: border-box; 
+            padding: 10px; 
+            border: 1px solid #000; 
+            border-radius: 5px; 
+            font-family: inherit; 
+            font-size: 13px; 
+            min-height: 70px; 
+            resize: vertical; 
+            outline: none; 
+        }
         
         .status-box { 
             width: 80%; margin: 20px auto; padding: 20px; 
@@ -63,7 +79,7 @@
         }
         .btn-print:hover { background: #333; }
 
-        /* AJUSTES PARA EL PDF */
+        /* AJUSTES PARA QUE EL PDF SALGA PERFECTO */
         @media print {
             @page { size: letter; margin: 1cm; }
             body { background-color: white; padding: 0; }
@@ -71,6 +87,7 @@
             .btn-print { display: none; }
             select { border: none; appearance: none; -webkit-appearance: none; font-weight: bold; font-size: 14px; background: none; }
             input { border: none !important; font-weight: bold; }
+            .obs-box textarea { border: 1px solid #000 !important; resize: none; overflow: hidden; }
             .status-box { border-width: 2.5pt; }
         }
     </style>
@@ -106,6 +123,24 @@
         </thead>
         <tbody id="tablaBody"></tbody>
     </table>
+
+    <!-- APARTADO DE EXAMEN AGREGADO -->
+    <div class="info-section">
+        <div class="info-box" style="flex: 1;">
+            <strong>NOTA DEL EXAMEN</strong>
+            <input type="text" placeholder="Ej: 90">
+        </div>
+        <div class="info-box" style="flex: 3;">
+            <strong>OBSERVACIONES DEL EXAMEN</strong>
+            <input type="text" placeholder="Comentarios específicos sobre el examen...">
+        </div>
+    </div>
+
+    <!-- RECUADRO DE OBSERVACIONES GENERALES -->
+    <div class="obs-box">
+        <strong>Observaciones Generales:</strong>
+        <textarea placeholder="Escriba aquí las observaciones generales del estudiante..."></textarea>
+    </div>
 
     <div id="resultadoFinal" class="status-box">
         <div class="status-title">Calificación Final Obtenida</div>
@@ -156,7 +191,7 @@
         let total = 0;
         document.querySelectorAll('.score').forEach(s => total += parseInt(s.value));
         
-        // Máximo 80 puntos (16 criterios x 5 pts)
+        // Máximo 80 puntos para el Nivel 12 (16 criterios x 5 pts)
         let porcentaje = (total / 80) * 100;
         document.getElementById('puntosLabel').innerText = total;
         document.getElementById('porcentajeLabel').innerText = porcentaje.toFixed(1) + "%";
