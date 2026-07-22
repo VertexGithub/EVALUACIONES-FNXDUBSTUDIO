@@ -4,16 +4,50 @@
     <meta charset="UTF-8">
     <title>Panel de Evaluaciones - Fnxdubstudio</title>
     <style>
-        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #f0f2f5; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
-        .menu-container { background: white; padding: 40px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); text-align: center; width: 400px; }
+        body { 
+            font-family: 'Segoe UI', Arial, sans-serif; 
+            background-color: #f0f2f5; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            min-height: 100vh; 
+            margin: 0; 
+            padding: 20px; 
+            box-sizing: border-box;
+        }
+        
+        .menu-container { 
+            background: white; 
+            padding: 40px; 
+            border-radius: 10px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+            text-align: center; 
+            width: 100%;
+            max-width: 750px; /* Ampliado para acomodar las dos columnas */
+        }
+        
         img { max-height: 80px; margin-bottom: 20px; }
-        h1 { font-size: 20px; text-transform: uppercase; margin-bottom: 30px; border-bottom: 2px solid #000; padding-bottom: 10px; }
+        
+        h1 { 
+            font-size: 20px; 
+            text-transform: uppercase; 
+            margin-bottom: 30px; 
+            border-bottom: 2px solid #000; 
+            padding-bottom: 10px; 
+        }
+
+        /* Contenedor Grid para organizar en columnas */
+        .botones-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* Crea exactamente 2 columnas del mismo tamaño */
+            gap: 15px; /* Espacio entre los botones */
+        }
+
         .btn-nivel { 
             display: block; 
             width: 100%; 
             box-sizing: border-box; 
             padding: 15px; 
-            margin: 10px auto; 
             background-color: #4682b4; /* Azul base */
             color: white; /* Letras blancas */
             border: none; 
@@ -22,9 +56,17 @@
             font-weight: bold; 
             transition: 0.3s;
         }
+        
         .btn-nivel:hover { 
             background-color: #63a4d7; /* Azul más claro para el resaltado */
             transform: scale(1.02); 
+        }
+
+        /* Diseño responsivo: Si la pantalla es muy pequeña (celulares), pasa a 1 sola columna */
+        @media (max-width: 650px) {
+            .botones-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -33,20 +75,23 @@
         <img src="https://i.postimg.cc/rK3xCRc0/LOGO-DUB-STUDIO-FNX.png" alt="Logo Fnxdubstudio">
         <h1>Control de Evaluaciones</h1>
 
-        <a href="nivel01.html" class="btn-nivel">EVALUACIÓN NIVEL 1</a>
-        <a href="nivel02.html" class="btn-nivel">EVALUACIÓN NIVEL 2</a>
-        <a href="nivel03.html" class="btn-nivel">EVALUACIÓN NIVEL 3</a>
-        <a href="nivel05.html" class="btn-nivel">EVALUACIÓN NIVEL 5</a>
-        <a href="nivel06.html" class="btn-nivel">EVALUACIÓN NIVEL 6</a>
-        <a href="nivel07.html" class="btn-nivel">EVALUACIÓN NIVEL 7</a>
-        <a href="nivel08.html" class="btn-nivel">EVALUACIÓN NIVEL 8</a>
-        <a href="nivel09.html" class="btn-nivel">EVALUACIÓN NIVEL 9</a>
-        <a href="nivel10.html" class="btn-nivel">EVALUACIÓN NIVEL 10</a>
-        <a href="nivel11.html" class="btn-nivel">EVALUACIÓN NIVEL 11</a>
-        <a href="nivel12.html" class="btn-nivel">EVALUACIÓN NIVEL 12</a>
-        <a href="nivel13.html" class="btn-nivel">EVALUACIÓN NIVEL 13</a>
-        <a href="nivel14.html" class="btn-nivel">EVALUACIÓN NIVEL 14</a>
-        <a href="nivel15.html" class="btn-nivel">EVALUACIÓN NIVEL 15</a>
+        <!-- Envolvemos los botones en el contenedor Grid -->
+        <div class="botones-grid">
+            <a href="nivel01.html" class="btn-nivel">EVALUACIÓN NIVEL 1</a>
+            <a href="nivel02.html" class="btn-nivel">EVALUACIÓN NIVEL 2</a>
+            <a href="nivel03.html" class="btn-nivel">EVALUACIÓN NIVEL 3</a>
+            <a href="nivel05.html" class="btn-nivel">EVALUACIÓN NIVEL 5</a>
+            <a href="nivel06.html" class="btn-nivel">EVALUACIÓN NIVEL 6</a>
+            <a href="nivel07.html" class="btn-nivel">EVALUACIÓN NIVEL 7</a>
+            <a href="nivel08.html" class="btn-nivel">EVALUACIÓN NIVEL 8</a>
+            <a href="nivel09.html" class="btn-nivel">EVALUACIÓN NIVEL 9</a>
+            <a href="nivel10.html" class="btn-nivel">EVALUACIÓN NIVEL 10</a>
+            <a href="nivel11.html" class="btn-nivel">EVALUACIÓN NIVEL 11</a>
+            <a href="nivel12.html" class="btn-nivel">EVALUACIÓN NIVEL 12</a>
+            <a href="nivel13.html" class="btn-nivel">EVALUACIÓN NIVEL 13</a>
+            <a href="nivel14.html" class="btn-nivel">EVALUACIÓN NIVEL 14</a>
+            <a href="nivel15.html" class="btn-nivel">EVALUACIÓN NIVEL 15</a>
+        </div>
         
     </div>
 </body>
