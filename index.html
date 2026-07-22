@@ -23,7 +23,7 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
             text-align: center; 
             width: 100%;
-            max-width: 750px; /* Ampliado para acomodar las dos columnas */
+            max-width: 750px; 
         }
         
         img { max-height: 80px; margin-bottom: 20px; }
@@ -36,11 +36,11 @@
             padding-bottom: 10px; 
         }
 
-        /* Contenedor Grid para organizar en columnas */
+        /* Contenedor Grid para dos columnas */
         .botones-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr); /* Crea exactamente 2 columnas del mismo tamaño */
-            gap: 15px; /* Espacio entre los botones */
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 15px; 
         }
 
         .btn-nivel { 
@@ -62,7 +62,7 @@
             transform: scale(1.02); 
         }
 
-        /* Diseño responsivo: Si la pantalla es muy pequeña (celulares), pasa a 1 sola columna */
+        /* Diseño responsivo para pantallas pequeñas */
         @media (max-width: 650px) {
             .botones-grid {
                 grid-template-columns: 1fr;
@@ -75,21 +75,38 @@
         <img src="https://i.postimg.cc/rK3xCRc0/LOGO-DUB-STUDIO-FNX.png" alt="Logo Fnxdubstudio">
         <h1>Control de Evaluaciones</h1>
 
-        <!-- Envolvemos los botones en el contenedor Grid -->
+        <!-- Botones ordenados en columnas: Columna Izquierda (1 al 7), Columna Derecha (8 al 15) -->
         <div class="botones-grid">
+            <!-- Fila 1 -->
             <a href="nivel01.html" class="btn-nivel">EVALUACIÓN NIVEL 1</a>
-            <a href="nivel02.html" class="btn-nivel">EVALUACIÓN NIVEL 2</a>
-            <a href="nivel03.html" class="btn-nivel">EVALUACIÓN NIVEL 3</a>
-            <a href="nivel05.html" class="btn-nivel">EVALUACIÓN NIVEL 5</a>
-            <a href="nivel06.html" class="btn-nivel">EVALUACIÓN NIVEL 6</a>
-            <a href="nivel07.html" class="btn-nivel">EVALUACIÓN NIVEL 7</a>
             <a href="nivel08.html" class="btn-nivel">EVALUACIÓN NIVEL 8</a>
+            
+            <!-- Fila 2 -->
+            <a href="nivel02.html" class="btn-nivel">EVALUACIÓN NIVEL 2</a>
             <a href="nivel09.html" class="btn-nivel">EVALUACIÓN NIVEL 9</a>
+            
+            <!-- Fila 3 -->
+            <a href="nivel03.html" class="btn-nivel">EVALUACIÓN NIVEL 3</a>
             <a href="nivel10.html" class="btn-nivel">EVALUACIÓN NIVEL 10</a>
+            
+            <!-- Fila 4 -->
+            <a href="nivel04.html" class="btn-nivel">EVALUACIÓN NIVEL 4</a>
             <a href="nivel11.html" class="btn-nivel">EVALUACIÓN NIVEL 11</a>
+            
+            <!-- Fila 5 -->
+            <a href="nivel05.html" class="btn-nivel">EVALUACIÓN NIVEL 5</a>
             <a href="nivel12.html" class="btn-nivel">EVALUACIÓN NIVEL 12</a>
+            
+            <!-- Fila 6 -->
+            <a href="nivel06.html" class="btn-nivel">EVALUACIÓN NIVEL 6</a>
             <a href="nivel13.html" class="btn-nivel">EVALUACIÓN NIVEL 13</a>
+            
+            <!-- Fila 7 -->
+            <a href="nivel07.html" class="btn-nivel">EVALUACIÓN NIVEL 7</a>
             <a href="nivel14.html" class="btn-nivel">EVALUACIÓN NIVEL 14</a>
+
+            <!-- Fila 8 (Solo lado derecho para completar hasta el 15) -->
+            <div></div> <!-- Espacio vacío en la columna izquierda -->
             <a href="nivel15.html" class="btn-nivel">EVALUACIÓN NIVEL 15</a>
         </div>
         
