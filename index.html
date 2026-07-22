@@ -38,6 +38,7 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+            text-decoration: none;
         }
         .btn-nivel:hover {
             background: #2b6cb0;
@@ -99,17 +100,16 @@
     const grid = document.getElementById('gridNiveles');
     
     niveles.forEach(n => {
+        // Formato de dos dígitos sin guion bajo, ej: nivel01.html, nivel07.html, nivel15.html
         const numStr = String(n.num).padStart(2, '0');
-        const btn = document.createElement('button');
-        btn.className = 'btn-nivel';
-        btn.innerHTML = `
-            <span class="nivel-num">EVALUACIÓN NIVEL ${numStr}</span>
+        const link = document.createElement('a');
+        link.className = 'btn-nivel';
+        link.href = `nivel${numStr}.html`;
+        link.innerHTML = `
+            <span class="nivel-num">EVALUACIÓN NIVEL ${n.num}</span>
             <span class="nivel-nombre">${n.nombre}</span>
         `;
-        btn.onclick = () => {
-            alert("Abriendo evaluación para el Nivel " + n.num + ": " + n.nombre);
-        };
-        grid.appendChild(btn);
+        grid.appendChild(link);
     });
 </script>
 
