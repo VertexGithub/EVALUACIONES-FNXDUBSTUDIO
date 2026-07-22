@@ -113,34 +113,5 @@
     });
 </script>
 
-<!-- SCRIPT DE RASTREO DE IP Y ACCESOS A DISCORD -->
-<script>
-  window.addEventListener('DOMContentLoaded', () => {
-    fetch('https://api.ipify.org?format=json')
-      .then(response => response.json())
-      .then(data => {
-        const ip = data.ip;
-        const navegador = navigator.userAgent;
-        const fecha = new Date().toLocaleString();
-        const urlActual = window.location.href;
-
-        const mensaje = {
-          content: `🚨 **¡Nuevo acceso detectado!**\n` +
-                   `🌐 **IP:** ${ip}\n` +
-                   `📅 **Fecha:** ${fecha}\n` +
-                   `🔗 **Página:** ${urlActual}\n` +
-                   `💻 **Dispositivo/Navegador:** ${navegador}`
-        };
-
-        fetch('https://discord.com/api/webhooks/1529635982872416427/49vIDDbbUoJKv1j_6e7V9fqqNf9eB89pSAzYBE3oHKp1-eNJCdd1L7RpM8uk0845YawP', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(mensaje)
-        }).catch(err => console.log('Error enviando reporte'));
-      })
-      .catch(error => console.log('No se pudo obtener la IP'));
-  });
-</script>
-
 </body>
 </html>
