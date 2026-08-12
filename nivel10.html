@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evaluación Nivel 10 - Fnxdubstudio</title>
+    <style>
+        /* ESTILOS VISUALES COMPACTOS PARA UNA SOLA PÁGINA */
+        body { font-family: 'Segoe UI', Arial, sans-serif; padding: 10px; background-color: #f0f2f5; color: #333; margin: 0; }
+        .container { 
+            max-width: 850px; 
+            margin: auto; 
+            background: white; 
+            padding: 20px 30px; 
+            border-radius: 10px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+            box-sizing: border-box;
+        }
+        
+        .header { text-align: center; border-bottom: 2px solid #000; margin-bottom: 10px; padding-bottom: 6px; }
+        .header img { max-height: 50px; margin-bottom: 4px; }
+        .header h1 { font-size: 16px; margin: 0; text-transform: uppercase; letter-spacing: 1px; }
+        .header h2 { font-size: 12px; font-weight: normal; margin: 2px 0; color: #555; text-transform: uppercase; }
+        
+        .info-section { 
+            display: flex; 
+            justify-content: center; 
+            margin: 8px 0 15px 0; 
+        }
+        .info-box { width: 60%; text-align: center; }
+        .info-box strong { display: block; margin-bottom: 2px; font-size: 11px; }
+        .info-box input { 
+            border: none; 
+            border-bottom: 1px solid #000; 
+            width: 100%; 
+            text-align: center; 
+            font-size: 14px; 
+            padding: 4px; 
+            outline: none; 
+            background: transparent; 
+        }
+        
+        table { width: 100%; border-collapse: collapse; margin-bottom: 10px; font-size: 11px; }
+        th, td { border: 1px solid #000; padding: 4px 6px; text-align: center; }
+        th { background-color: #f8f9fa; text-transform: uppercase; font-size: 10px; }
+        .criterio-col { text-align: left; }
+
+        .header-profesores th { background-color: white; border: none; padding-bottom: 8px; }
+        .header-profesores strong { font-size: 10px; margin-bottom: 2px; display: block; color: #333; }
+        .header-profesores input { width: 85%; border: none; border-bottom: 1px solid #000; text-align: center; font-size: 12px; outline: none; background: transparent; padding: 2px; }
+
+        /* SECCIÓN DE TAREAS Y EXAMEN COMPACTAS */
+        .grid-extra {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+        .extra-box {
+            flex: 1;
+            border: 1px solid #000;
+            border-radius: 6px;
+            padding: 6px 10px;
+            background: #fafafa;
+        }
+        .extra-box strong { font-size: 10px; text-transform: uppercase; display: block; margin-bottom: 4px; text-align: center; }
+        .extra-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px; font-size: 11px; }
+        .extra-row input { width: 55px; text-align: center; border: 1px solid #ccc; border-radius: 3px; padding: 2px; font-size: 11px; }
+
+        /* RECUADRO DE OBSERVACIONES GENERALES */
+        .obs-box { margin-bottom: 10px; text-align: left; width: 100%; }
+        .obs-box strong { display: block; font-size: 10px; text-transform: uppercase; margin-bottom: 2px; }
+        .obs-box textarea { 
+            width: 100%; 
+            box-sizing: border-box; 
+            padding: 5px; 
+            border: 1px solid #000; 
+            border-radius: 4px; 
+            font-family: inherit; 
+            font-size: 11px; 
+            min-height: 30px; 
+            max-height: 45px;
+            resize: none; 
+            outline: none; 
+        }
+        
+        .status-box { 
+            width: 75%; margin: 4px auto; padding: 8px; 
+            border: 2px solid #000; border-radius: 8px; text-align: center;
+        }
+        .status-title { font-size: 10px; font-weight: bold; text-transform: uppercase; margin-bottom: 2px; }
+        .status-percentage { font-size: 16px; font-weight: bold; margin-bottom: 2px; }
+        .status-label { font-size: 20px; font-weight: 900; letter-spacing: 1px; }
+        
+        .bg-aprobado { background-color: #d4edda; border-color: #28a745; color: #155724; }
+        .bg-reprobado { background-color: #f8d7da; border-color: #dc3545; color: #721c24; }
+
+        .btn-print { 
+            display: block; width: 100%; padding: 10px; background: #000; color: white; 
+            border: none; border-radius: 5px; font-size: 13px; font-weight: bold; 
+            cursor: pointer; margin-top: 8px; transition: 0.3s; text-transform: uppercase;
+        }
+        .btn-print:hover { background: #333; }
+
+        /* AJUSTES ESTRICTOS PARA QUE TODO SALGA EN UNA SOLA PÁGINA CARTA */
+        @media print {
+            @page { size: letter; margin: 0.4cm; }
+            body { background-color: white; padding: 0; }
+            .container { box-shadow: none; border: none; width: 100%; max-width: 100%; margin: 0; padding: 0; }
+            .btn-print { display: none; }
+            select { border: none; appearance: none; -webkit-appearance: none; font-weight: bold; font-size: 11px; background: none; }
+            input, textarea { border: none !important; font-weight: bold; }
+            .header-profesores input { border-bottom: none !important; }
+            .extra-box { border: 1px solid #000 !important; background: transparent; }
+            .obs-box textarea { border: 1px solid #000 !important; overflow: hidden; }
+            .status-box { border-width: 2pt; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container" id="boleta">
+    <div class="header">
+        <img src="https://i.postimg.cc/rK3xCRc0/LOGO-DUB-STUDIO-FNX.png" alt="Logo Fnxdubstudio">
+        <h1>FICHA DE EVALUACIÓN - NIVEL 10</h1>
+        <h2>TEORÍA DE LA VOZ Y EXPRESIÓN MUSICAL</h2>
+    </div>
+
+    <div class="info-section">
+        <div class="info-box">
+            <strong>ESTUDIANTE</strong>
+            <input type="text" id="nombreAlumno" placeholder="Nombre completo">
+        </div>
+    </div>
+
+    <table>
+        <thead>
+            <tr class="header-profesores">
+                <th></th>
+                <th colspan="2">
+                    <strong>PROFESOR DE TEORÍA DE LA VOZ</strong>
+                    <input type="text" placeholder="Nombre del profesor">
+                </th>
+                <th colspan="2">
+                    <strong>PROFESOR DE EXPRESIÓN MUSICAL</strong>
+                    <input type="text" placeholder="Nombre del profesor">
+                </th>
+            </tr>
+            <tr>
+                <th style="width: 4%;">#</th>
+                <th style="width: 38%;">TEORÍA DE LA VOZ</th>
+                <th style="width: 10%;">Puntaje</th>
+                <th style="width: 38%;">EXPRESIÓN MUSICAL</th>
+                <th style="width: 10%;">Puntaje</th>
+            </tr>
+        </thead>
+        <tbody id="tablaBody"></tbody>
+    </table>
+
+    <!-- SECCIÓN DE TAREAS Y EXAMEN -->
+    <div class="grid-extra">
+        <div class="extra-box">
+            <strong>Tareas (Valor máx: 20 pts)</strong>
+            <div class="extra-row">
+                <span>Calificación (0-20):</span>
+                <input type="text" id="notaTareas" placeholder="0-20" oninput="calcular()"><span>pts</span>
+            </div>
+            <div style="font-size: 9px; color: #555; margin-top: 2px; text-align: center;">20 pts equivalen al 20% final</div>
+        </div>
+        <div class="extra-box">
+            <strong>Examen (Valor máx: 20 pts)</strong>
+            <div class="extra-row">
+                <span>Calificación (0-20):</span>
+                <input type="text" id="notaExamen" placeholder="0-20" oninput="calcular()"><span>pts</span>
+            </div>
+            <div style="font-size: 9px; color: #555; margin-top: 2px; text-align: center;">20 pts equivalen al 20% final</div>
+        </div>
+    </div>
+
+    <!-- RECUADRO DE OBSERVACIONES GENERALES -->
+    <div class="obs-box">
+        <strong>Observaciones Generales:</strong>
+        <textarea placeholder="Escriba aquí las observaciones generales del estudiante..."></textarea>
+    </div>
+
+    <div id="resultadoFinal" class="status-box">
+        <div class="status-title">Calificación Final Ponderada (Tabla 60% + Examen 20% + Tareas 20%)</div>
+        <div class="status-percentage"><span id="porcentajeLabel">0.0%</span></div>
+        <div id="statusText" class="status-label">PENDIENTE</div>
+    </div>
+</div>
+
+<button class="btn-print" onclick="window.print()">Generar PDF para el Alumno</button>
+
+<script>
+    const filasData = [
+        {
+            teoria: "Presenta una biografía detallada, objetivos claros y un arco emocional profundo. La fiscalidad propuesta es coherente.",
+            musical: "Ejecuta sus ejercicios de vocalización de forma correcta."
+        },
+        {
+            teoria: "Identifica con precisión la estructura, armonía, tempo y dinámicas.",
+            musical: "Afinación en sus ejercicios de vocalización"
+        },
+        {
+            teoria: "Define tesitura, registros y pasajes técnicos con precisión técnica.",
+            musical: "Domina los ejercicios de respiración y su fiato."
+        },
+        {
+            teoria: "Traducción impecable (si aplica) y dicción analizada. El subtexto es creativo y está alineado con la música.",
+            musical: "Domina la agilidad vocal y estabilidad en sus vocales."
+        },
+        {
+            teoria: "La partitura muestra marcas claras de respiración, dinámicas, secciones y puntos de articulación.",
+            musical: "Domina todos los registros vocales en su ejecución diaria."
+        }
+    ];
+
+    const tbody = document.getElementById('tablaBody');
+    filasData.forEach((row, i) => {
+        const tr = `<tr>
+            <td>${i+1}</td>
+            <td class="criterio-col">${row.teoria}</td>
+            <td><select class="score score-teoria" onchange="calcular()">
+                <option value="0">-</option><option value="1">1</option>
+                <option value="2">2</option><option value="3">3</option>
+                <option value="4">4</option><option value="5">5</option>
+            </select></td>
+            <td class="criterio-col">${row.musical}</td>
+            <td><select class="score score-musical" onchange="calcular()">
+                <option value="0">-</option><option value="1">1</option>
+                <option value="2">2</option><option value="3">3</option>
+                <option value="4">4</option><option value="5">5</option>
+            </select></td>
+        </tr>`;
+        tbody.innerHTML += tr;
+    });
+
+    function calcular() {
+        // 1. Cálculo de la Tabla de Criterios (Nivel 10 tiene 5 filas con 2 apartados c/u = 10 calificaciones -> Máximo 50 puntos) (Valor 60%)
+        let totalPuntos = 0;
+        document.querySelectorAll('.score').forEach(s => totalPuntos += parseInt(s.value));
+        let porcentajeTablaBase = (totalPuntos / 50) * 100;
+        let ponderacionTabla = porcentajeTablaBase * 0.60;
+
+        // 2. Cálculo de Tareas (Escala de 0 a 20, donde 20 es el 100% de su rubro, aportando hasta 20%)
+        let valTareas = parseFloat(document.getElementById('notaTareas').value);
+        let ponderacionTareas = isNaN(valTareas) ? 0 : (valTareas / 20) * 20;
+
+        // 3. Cálculo de Examen (Escala de 0 a 20, donde 20 es el 100% de su rubro, aportando hasta 20%)
+        let valExamen = parseFloat(document.getElementById('notaExamen').value);
+        let ponderacionExamen = isNaN(valExamen) ? 0 : (valExamen / 20) * 20;
+
+        // Suma Ponderada Final (60% + 20% + 20% = 100%)
+        let calificacionFinal = ponderacionTabla + ponderacionTareas + ponderacionExamen;
+
+        // Mostrar resultado final en porcentaje
+        document.getElementById('porcentajeLabel').innerText = calificacionFinal.toFixed(1) + "% (Tabla 60%: " + ponderacionTabla.toFixed(1) + " pts)";
+
+        const box = document.getElementById('resultadoFinal');
+        const txt = document.getElementById('statusText');
+
+        let hayDatos = totalPuntos > 0 || !isNaN(valTareas) || !isNaN(valExamen);
+
+        if (!hayDatos) {
+            txt.innerText = "PENDIENTE";
+            box.className = "status-box";
+        } else if (calificacionFinal >= 70) {
+            txt.innerText = "APROBADO";
+            box.className = "status-box bg-aprobado";
+        } else {
+            txt.innerText = "NO APROBADO";
+            box.className = "status-box bg-reprobado";
+        }
+    }
+</script>
+</body>
+</html>
