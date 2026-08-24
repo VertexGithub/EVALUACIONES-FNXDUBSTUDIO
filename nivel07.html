@@ -17,34 +17,34 @@
             box-sizing: border-box;
         }
         
-        .header { text-align: center; border-bottom: 2px solid #000; margin-bottom: 10px; padding-bottom: 6px; }
-        .header img { max-height: 50px; margin-bottom: 4px; }
-        .header h1 { font-size: 16px; margin: 0; text-transform: uppercase; letter-spacing: 1px; }
-        .header h2 { font-size: 12px; font-weight: normal; margin: 2px 0; color: #555; text-transform: uppercase; }
+        .header { text-align: center; border-bottom: 2px solid #000; margin-bottom: 12px; padding-bottom: 8px; }
+        .header img { max-height: 60px; margin-bottom: 5px; }
+        .header h1 { font-size: 18px; margin: 0; text-transform: uppercase; letter-spacing: 1px; }
+        .header h2 { font-size: 13px; font-weight: normal; margin: 3px 0; color: #555; text-transform: uppercase; }
         
         .info-section { 
             display: flex; 
             justify-content: space-between; 
-            margin: 8px 0; 
+            margin: 10px 0; 
             gap: 15px;
         }
         .info-box { flex: 1; text-align: center; }
-        .info-box strong { display: block; margin-bottom: 2px; font-size: 11px; }
+        .info-box strong { display: block; margin-bottom: 2px; font-size: 12px; }
         .info-box input { 
             border: none; 
             border-bottom: 1px solid #000; 
             width: 100%; 
             text-align: center; 
-            font-size: 13px; 
+            font-size: 14px; 
             padding: 2px; 
             outline: none; 
             background: transparent; 
         }
         
-        table { width: 100%; border-collapse: collapse; margin-bottom: 10px; font-size: 11px; }
-        th, td { border: 1px solid #000; padding: 4px 6px; text-align: center; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 15px; font-size: 11px; }
+        th, td { border: 1px solid #000; padding: 5px 8px; text-align: center; }
         th { background-color: #f8f9fa; text-transform: uppercase; font-size: 10px; }
-        .criterio-col { text-align: left; width: 52%; }
+        .criterio-col { text-align: left; width: 50%; }
 
         /* SECCIÓN DE TAREAS Y EXAMEN COMPACTAS */
         .grid-extra {
@@ -63,51 +63,50 @@
         .extra-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px; font-size: 11px; }
         .extra-row input { width: 55px; text-align: center; border: 1px solid #ccc; border-radius: 3px; padding: 2px; font-size: 11px; }
 
-        /* RECUADRO DE OBSERVACIONES GENERALES */
-        .obs-box { margin-bottom: 10px; text-align: left; width: 100%; }
-        .obs-box strong { display: block; font-size: 10px; text-transform: uppercase; margin-bottom: 2px; }
+        /* RECUADRO DE OBSERVACIONES GENERALES OPTIMIZADO */
+        .obs-box { margin-bottom: 15px; text-align: left; width: 100%; }
+        .obs-box strong { display: block; font-size: 11px; text-transform: uppercase; margin-bottom: 5px; }
         .obs-box textarea { 
             width: 100%; 
             box-sizing: border-box; 
-            padding: 5px; 
+            padding: 8px; 
             border: 1px solid #000; 
-            border-radius: 4px; 
+            border-radius: 5px; 
             font-family: inherit; 
             font-size: 11px; 
-            min-height: 30px; 
-            max-height: 45px;
+            min-height: 60px; 
             resize: none; 
-            outline: none; 
+            overflow: hidden; 
         }
         
         .status-box { 
-            width: 75%; margin: 4px auto; padding: 8px; 
+            width: 75%; margin: 10px auto; padding: 12px; 
             border: 2px solid #000; border-radius: 8px; text-align: center;
         }
-        .status-title { font-size: 10px; font-weight: bold; text-transform: uppercase; margin-bottom: 2px; }
-        .status-percentage { font-size: 16px; font-weight: bold; margin-bottom: 2px; }
-        .status-label { font-size: 20px; font-weight: 900; letter-spacing: 1px; }
+        .status-title { font-size: 11px; font-weight: bold; text-transform: uppercase; margin-bottom: 3px; }
+        .status-percentage { font-size: 18px; font-weight: bold; margin-bottom: 5px; }
+        .status-label { font-size: 24px; font-weight: 900; letter-spacing: 1px; }
         
         .bg-aprobado { background-color: #d4edda; border-color: #28a745; color: #155724; }
         .bg-reprobado { background-color: #f8d7da; border-color: #dc3545; color: #721c24; }
 
         .btn-print { 
-            display: block; width: 100%; padding: 10px; background: #000; color: white; 
-            border: none; border-radius: 5px; font-size: 13px; font-weight: bold; 
-            cursor: pointer; margin-top: 8px; transition: 0.3s; text-transform: uppercase;
+            display: block; width: 100%; padding: 12px; background: #000; color: white; 
+            border: none; border-radius: 5px; font-size: 14px; font-weight: bold; 
+            cursor: pointer; margin-top: 15px; transition: 0.3s; text-transform: uppercase;
         }
         .btn-print:hover { background: #333; }
 
-        /* AJUSTES ESTRICTOS PARA QUE TODO SALGA EN UNA SOLA PÁGINA CARTA */
+        /* AJUSTES ESTRICTOS PARA EL PDF (UNA SOLA HOJA) */
         @media print {
-            @page { size: letter; margin: 0.4cm; }
+            @page { size: letter; margin: 0.5cm; }
             body { background-color: white; padding: 0; }
             .container { box-shadow: none; border: none; width: 100%; max-width: 100%; margin: 0; padding: 0; }
             .btn-print { display: none; }
-            select { border: none; appearance: none; -webkit-appearance: none; font-weight: bold; font-size: 11px; background: none; }
-            input, textarea { border: none !important; font-weight: bold; }
+            select { border: none; appearance: none; -webkit-appearance: none; font-weight: bold; font-size: 12px; background: none; }
+            input { border: none !important; font-weight: bold; }
             .extra-box { border: 1px solid #000 !important; background: transparent; }
-            .obs-box textarea { border: 1px solid #000 !important; overflow: hidden; }
+            .obs-box textarea { border: 1px solid #000 !important; overflow: visible !important; white-space: pre-wrap; }
             .status-box { border-width: 2pt; }
         }
     </style>
@@ -118,7 +117,7 @@
     <div class="header">
         <img src="https://i.postimg.cc/rK3xCRc0/LOGO-DUB-STUDIO-FNX.png" alt="Logo Fnxdubstudio">
         <h1>FICHA DE EVALUACIÓN - NIVEL 7</h1>
-        <h2>TÉCNICAS EN ARTES ESCENICAS</h2>
+        <h2>TÉCNICAS EN ARTES ESCÉNICAS</h2>
     </div>
 
     <div class="info-section">
@@ -164,10 +163,11 @@
         </div>
     </div>
 
-    <!-- RECUADRO DE OBSERVACIONES GENERALES -->
+    <!-- RECUADRO DE OBSERVACIONES GENERALES AUTO-AJUSTABLE -->
     <div class="obs-box">
         <strong>Observaciones Generales:</strong>
-        <textarea placeholder="Escriba aquí las observaciones generales del estudiante..."></textarea>
+        <textarea placeholder="Escriba aquí las observaciones generales del estudiante..." 
+                  oninput="this.style.height = ''; this.style.height = this.scrollHeight + 'px'"></textarea>
     </div>
 
     <div id="resultadoFinal" class="status-box">
@@ -181,24 +181,15 @@
 
 <script>
     const criterios = [
-        "Manejo del espacio",
-        "Expresividad corporal",
-        "Manejo de emociones",
-        "NATURALIDAD AL ACTUAR",
-        "Construccion de personajes",
-        "Capacidad de relacionarse con otros \"personajes\" o \"actores\" (incluye espacio escenico y naturalidad al actuar en contraste)",
-        "Apoyo de útiles externos (objetos, escenario, maquillaje, vestimenta etc.)",
-        "Manejo de la voz (general)",
-        "Manejo de tiempo",
-        "¿Como se preparo físicamente para la obra?",
-        "¿Uso el si mágico?",
-        "¿Qué aprendió acerca del tipo de personajes como el protagonista? (esquizofrénicos)",
-        "¿Utilizó su imaginación? Por ejemplo: identificar con que aspecto recreaba a las demás voces, como sentía las acciones físicas de estas.",
-        "¿Cómo planeo materializar los quiebres emocionales/ momentos culmines del protagonista?",
-        "¿Identifico acciones esenciales?",
-        "¿Hizo uso de AS-IF?",
-        "¿Cuál era el objetivo de cada sección/escena, y cual era el SUPEROBJETIVO del protagonista?",
-        "¿Uso las preguntas clave de Stanislavsky para determinar que conoce el personaje?"
+        "Manejo del tiempo para cada ejercicio",
+        "Comprensión de las instrucciones y circunstancias dadas",
+        "Construcción de personajes",
+        "Versatilidad o variación en sus distintos tonos de voz",
+        "Proyección de las emociones principales",
+        "Lectura y dicción",
+        "Compromiso con los ejercicios y tareas",
+        "Gestualidad y Corporalidad",
+        "Actitud en clase"
     ];
 
     const tbody = document.getElementById('tablaBody');
@@ -211,16 +202,16 @@
                 <option value="2">2</option><option value="3">3</option>
                 <option value="4">4</option><option value="5">5</option>
             </select></td>
-            <td><input type="text" class="obs" style="width:96%; border:none; border-bottom:1px solid #eee; outline:none; font-size:11px;"></td>
+            <td><input type="text" class="obs" style="width:96%; border:none; border-bottom:1px solid #eee; outline:none; font-size:9px;"></td>
         </tr>`;
         tbody.innerHTML += row;
     });
 
     function calcular() {
-        // 1. Cálculo de la Tabla de Criterios (Nivel 7 tiene 18 criterios -> Máximo 90 puntos) (Valor 60%)
+        // 1. Cálculo de la Tabla de Criterios (Nivel 7 tiene 9 criterios -> Máximo 45 puntos) (Valor 60%)
         let totalPuntos = 0;
         document.querySelectorAll('.score').forEach(s => totalPuntos += parseInt(s.value));
-        let porcentajeTablaBase = (totalPuntos / 90) * 100;
+        let porcentajeTablaBase = (totalPuntos / 45) * 100;
         let ponderacionTabla = porcentajeTablaBase * 0.60;
 
         // 2. Cálculo de Tareas (Escala de 0 a 20, donde 20 es el 100% de su rubro, aportando hasta 20%)
